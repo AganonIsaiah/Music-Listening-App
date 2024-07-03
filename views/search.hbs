@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/styles/search.css">
+</head>
+
+<body>
+    <div class="container">
+
+        {{#if notFound}}
+        <p class="alert">No results found for "{{song.title}}" by "{{song.artist}}".</p>
+        {{else}}
+        {{#if song}}
+
+        <h2>Song: {{song.videoTitle}}</h2>
+        <h3>Artist: {{song.artistName}}</h3>
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{song.videoId}}?autoplay=1" frameborder="0" allowfullscreen></iframe>
+
+        <form action="/addToPlaylist" method="post">
+            <input type="hidden" name="videoId" value="{{song.videoId}}">
+            <input type="hidden" name="videoTitle" value="{{song.videoTitle}}">
+            <input type="hidden" name="videoUrl" value="{{song.videoId}}">
+            <input type="submit" value="Add to Playlist">
+        </form>
+
+        <form action="/showPlaylist" method="get">
+            <input type="submit" value="Show Playlist">
+        </form>
+
+        {{/if}}
+        {{/if}}
+
+        {{#if message}}
+        <div class="message">
+            {{message}}
+        </div>
+        {{/if}}
+        
+        <form action="/search" method="get">
+            <div>
+                <label for="song">Song Title:</label>
+                <input type="text" id="song" name="song" required>
+            </div>
+            <div>
+                <label for="artist">Artist Name:</label>
+                <input type="text" id="artist" name="artist">
+            </div>
+            <div>
+                <input type="submit" value="Search">
+            </div>
+        </form>
+
+        <form action="/" method="get">
+            <input type="submit" value="Logout">
+        </form>
+    </div>
+
+</body>
+
+</html>

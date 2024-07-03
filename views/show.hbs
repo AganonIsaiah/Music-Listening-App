@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/styles/show.css">
+</head>
+
+<body>
+
+    <div class="header-container">
+        <h1>Playlist for {{username}}</h1>
+
+        <div class="header-buttons">
+            <form action="/search" method="get">
+                <input type="submit" value="Search">
+            </form>
+
+            <form action="/" method="get">
+                <input type="submit" value="Logout">
+            </form>
+        </div>
+    </div>
+
+    <div class="songs-container">
+        <h1>Songs</h1>
+        <ul>
+            {{#each playlistEntries}}
+            <li>
+                <iframe width="250" height="250" src="https://www.youtube.com/embed/{{this.videoId}}" frameborder="0"
+                    allowfullscreen></iframe>
+                <p><a href="https://www.youtube.com/watch?v={{this.videoId}}" target="_blank">{{this.videoTitle}}</a></p>
+                <form action="/deleteFromPlaylist" method="post">
+                    <input type="hidden" name="videoId" value="{{this.videoId}}">
+                    <input type="submit" value="Delete">
+                </form>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+
+</body>
+
+</html>

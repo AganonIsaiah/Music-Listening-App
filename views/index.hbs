@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="/styles/index.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Song Playlist</h1>
+        <div style="margin-bottom: 50px;"></div>
+        {{#if ifLoggedIn}}
+        <div class="user-info-box">
+            <h2>Username: {{userName}}</h2>
+            <h2>Role: {{userRole}}</h2>
+        </div>
+
+        <div style="margin-bottom: 50px;"></div>
+        <h1>Actions:</h1>
+        {{#if ifAdmin}}
+        <form action="/users" method="get">
+            <input type="submit" value="View Users">
+        </form>
+        {{/if}}
+
+        <form action="/search" method="get">
+            <input type="submit" value="Search">
+        </form>
+
+        <form action="/showPlaylist" method="get">
+            <input type="submit" value="Show Playlist">
+        </form>
+
+        <form action="/" method="get">
+            <input type="submit" value="Logout">
+        </form>
+        {{/if}}
+
+        {{#unless ifLoggedIn}}
+        <h1>Sign Up</h1>
+        <form action="/signup" method="post">
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div>
+                <input type="submit" value="Sign Up">
+            </div>
+        </form>
+
+        <div style="margin-bottom: 50px;"></div>
+
+        <h1>Login</h1>
+        <form action="/login" method="post">
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div>
+                <input type="submit" value="Login">
+            </div>
+        </form>
+
+        {{#if invalidLogin}}
+        <script>
+            alert('Enter a valid login');
+        </script>
+        {{/if}}
+
+        {{#if invalidSignUp}}
+        <script>
+            alert('Username already exists. Please choose a different username.');
+        </script>
+        {{/if}}
+        {{/unless}}
+    </div>
+
+</body>
+
+</html>

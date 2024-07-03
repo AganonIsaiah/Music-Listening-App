@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title> {{title}} </title>
+   <link rel="stylesheet" href="/styles/users.css">
+</head>
+
+<body>
+   <div class="container">
+       <h1>{{title}}</h1>
+   
+       <form action="/" method="get">
+          <input type="submit" value="Logout">
+       </form>
+
+        <div class="user-list">
+          {{#each userEntries}}
+          <div class="user-info">
+              <p><strong>Username:</strong> {{this.username}}</p>
+              <p><strong>Password:</strong> {{this.passcode}}</p>
+              <p><strong>Role:</strong> {{this.role}}</p>
+          </div>
+          {{/each}}
+       </div>
+   </div>
+</body>
+
+</html>
