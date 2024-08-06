@@ -3,11 +3,13 @@
 - Employs YouTube's Data API v3 to fetch videos from YouTube and add them to the users playlist.
 - Utilizes SQLite3 to save and sort each users' playlist and maintain persistent user song information.
 
+# Ensure node_modules is deleted
+
 ## Install Instructions:
     npm install
 
 ## Launch Instructions:
-    Node server.js
+    node server.js
 
 ## Testing Instructions:
     To test application: http://localhost:3000
